@@ -1,0 +1,49 @@
+Step 1: Dockerfile
+
+Create a file named Dockerfile in your project directory with the following content:
+
+Dockerfile
+
+# Use an official Python runtime as a parent image
+FROM python:3.9
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the requirements file into the container at /app
+COPY requirements.txt .
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code into the container
+COPY . .
+
+# Run the application when the container launches
+CMD ["python", "budget_app.py"]
+
+Step 2: requirements.txt
+
+Create a requirements.txt file in your project directory listing the required Python libraries:
+
+pandas
+openpyxl
+
+Step 3: Build the Docker Image
+
+Open a terminal, navigate to your project directory containing the Dockerfile and requirements.txt, and run the following command to build your Docker image:
+
+sh
+
+docker build -t budget-app .
+
+This command will build a Docker image named budget-app using the instructions in your Dockerfile.
+Step 4: Run the Docker Container
+
+Once the Docker image is built, you can run a Docker container using the following command:
+
+sh
+
+docker run -it --rm budget-app
+
+This command will start a Docker container from the budget-app image and run your budget tracking application inside the container.

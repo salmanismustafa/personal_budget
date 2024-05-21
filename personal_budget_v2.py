@@ -48,7 +48,7 @@ def create_excel_file(name, monthly_income, budget):
         df = pd.DataFrame(data, columns=['Category', 'Allocated Amount', 'Actual Amount', 'Notes'])
         df.to_excel(writer, sheet_name=month, index=False)
     
-    writer.save()
+    writer.close()
 
 def main():
     name, monthly_income = get_user_input()
